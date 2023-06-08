@@ -1,0 +1,180 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+#title {
+  font-family: 'Pacifico', cursive;
+  font-size: 3rem;
+  text-align: center;
+  color: #f5e9ef;
+  position: relative;
+  animation: sparkle 2s infinite;
+}
+
+@keyframes sparkle {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* #title::before {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: rgb(214, 205, 214);
+  overflow: hidden;
+  animation: glitch 2s infinite;
+} */
+
+@keyframes glitch {
+  0%, 100% {
+    clip-path: inset(0);
+    transform: scale(1);
+  }
+  20%, 80% {
+    clip-path: inset(0 50% 0 0);
+    transform: scale(0.9) rotate(-2deg);
+  }
+  40%, 60% {
+    clip-path: inset(0 0 0 50%);
+    transform: scale(0.9) rotate(2deg);
+  }
+}
+
+
+body, html {
+    height: 100%;
+    margin: 0;
+    background: #ebb8cf;
+    overflow: hidden;
+  }
+  
+  /* HEARTS */
+
+  #heart-container {
+    position: relative;
+
+  }
+  .heart {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background-image: url('svg\ files\/heart.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    pointer-events: none;
+    animation: float 5s ease-in-out infinite;
+  }
+  
+  
+  
+  @keyframes float {
+    0% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+    100% {
+      transform: translateY(0px);
+    }
+  }
+  
+  /* VIRTUAL ALBUM */
+  
+  #calendar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start; /* align items to the start */
+    width: 60%; /* reduce the width */
+    max-width: 600px; /* reduce the max-width */
+    margin: 20px; /* add margin to separate from the edges */
+    padding: 10px; /* reduce the padding */
+    box-sizing: border-box;
+  }
+.calendar__day {
+  width: calc(100% / 7);
+  height: 80px; /* reduce the height */
+  margin: 1px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #FFF3F8;
+  position: relative;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.calendar__day:hover {
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+.calendar__day .date-number {
+  .calendar__day .date-number {
+    font-family: 'Pacifico', cursive; /* Change to a "cute" font */
+    font-size: 1.5rem; /* Increase the font size */
+    color: #000;
+    text-shadow: 2px 2px 0 #fff, /* Simulate 3D effect */
+                 -1px -1px 0 #fff, 
+                 1px -1px 0 #fff, 
+                 -1px 1px 0 #fff,
+                 1px 1px 0 #fff;
+  }
+  
+}
+
+.calendar__day .unopened {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background: url('icons/box.png') no-repeat center center;
+  background-size: contain;
+}
+
+.calendar__day.disabled {
+  cursor: not-allowed;
+  background-color: #ccc;
+}
+
+#viewer {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 90vw;
+  max-height: 90vh;
+  z-index: 100;
+}
+
+.viewer__image {
+  max-width: 600px;
+  max-height: 400px;
+  width: auto;
+  height: auto;
+}
+
+
+
+/* Dropdown Styles */
+#monthDropdown {
+  display: block;
+  width: 60%; /* reduce the width */
+  max-width: 500px;
+  margin: 30px; /* adjusted the margin to align with the calendar */
+  padding: 5px;
+  background-color: #ccc;
+  color: #000;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+}
+
+#monthDropdown:hover {
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
