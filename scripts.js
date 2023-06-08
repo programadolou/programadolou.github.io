@@ -1,7 +1,45 @@
+document.addEventListener("DOMContentLoaded", function () {
+    const mainMenu = document.getElementById("main-menu");
+    const girlfriendButton = document.getElementById("girlfriend-button");
+    const irrelevantButton = document.getElementById("irrelevant-button");
+  
+    const virtualCalendar = document.getElementById("virtual-calendar");
+    const monthDropdown = document.getElementById("monthDropdown");
+    const virtualCalendarButton = document.getElementById("virtual-calendar-button");
+    const calendar = document.getElementById("calendar");
+    const viewer = document.getElementById("viewer");
+  
+    const blockedAccess = document.getElementById("blocked-access");
+  
+    virtualCalendar.style.display = "none";
+    blockedAccess.style.display = "none";
+
+    girlfriendButton.addEventListener("click", function () {
+      mainMenu.style.display = "none";
+      virtualCalendar.style.display = "block";  // Show the calendar button
+      monthDropdown.style.display = "block";  // Show the calendar button
+    });
+  
+    irrelevantButton.addEventListener("click", function () {
+      mainMenu.style.display = "none";
+      blockedAccess.style.display = "block";
+    });
+  
+    // virtualCalendarButton.addEventListener("click", function () {
+    //     virtualCalendarButton.style.display = "none";  // Hide the calendar button
+    //     virtualCalendar.style.display = "block";  // Show the calendar
+    //     console.log("entered calendar");
+    //     blockedAccess.style.display = "none"; // Hide the blocked access div
+    //     calendar.innerHTML = "";
+    //     viewer.innerHTML = "";
+    //   });
+      
+});
+
 // HEARTS
 const container = document.getElementById('heart-container');
 let counter = 0;
-
+console.log("hearts");
 document.addEventListener('mousemove', function (e) {
   counter++;
   if (counter % 10 !== 0) return;  // only create a heart every 10 mousemoves

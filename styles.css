@@ -97,6 +97,7 @@ body, html {
     padding: 10px; /* reduce the padding */
     box-sizing: border-box;
   }
+
 .calendar__day {
   width: calc(100% / 7);
   height: 80px; /* reduce the height */
@@ -156,10 +157,10 @@ body, html {
 .viewer__image {
   max-width: 600px;
   max-height: 400px;
+  margin-bottom: 40%;
   width: auto;
   height: auto;
 }
-
 
 
 /* Dropdown Styles */
@@ -196,3 +197,41 @@ body, html {
 }
 
 
+#monthDropdown {
+  display: none;
+}
+
+.button {
+  display: block;
+  width: 200px;
+  margin: 10px auto;
+  padding: 10px;
+  font-size: 1.2rem;
+  text-align: center;
+  background-color: #ccc;
+  color: #000;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #999;
+}
+
+#virtual-calendar-button {
+  margin-top: 20px;
+}
+
+#blocked-access img {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+}
+
+#blocked-access h1 {
+  text-align: center;
+  font-size: 2rem;
+  color: #f00;
+  margin-top: 20px;
+}
