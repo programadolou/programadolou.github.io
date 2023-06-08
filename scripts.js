@@ -20,52 +20,6 @@ document.addEventListener('mousemove', function (e) {
   }, 1000);
 });
 
-// SPOTIFY
-
-// Spotify Configuration
-const clientId = 'YOUR_CLIENT_ID';
-const accessToken = 'YOUR_ACCESS_TOKEN';
-const playlistId = 'YOUR_PLAYLIST_ID';
-
-// Spotify Player
-const spotifyPlayer = new Spotify.Player({
-  name: 'Music of the Day',
-  getOAuthToken: cb => { cb(accessToken); },
-});
-
-// Initialize the Spotify player
-spotifyPlayer.connect().then(success => {
-  if (success) {
-    console.log('Connected to Spotify');
-  } else {
-    console.error('Failed to connect to Spotify');
-  }
-}).catch(error => {
-  console.error('Error connecting to Spotify:', error);
-});
-
-// Get the Spotify player element
-const spotifyPlayerElement = document.getElementById('spotifyPlayer');
-
-// Append the Spotify player to the DOM
-spotifyPlayerElement.appendChild(spotifyPlayer._options.domReady ? spotifyPlayer._options.getTemplate() : spotifyPlayer._options.getTemplate());
-
-// Play the music of the day from the playlist
-function playMusicOfTheDay() {
-  // Get a random track from the playlist
-  const playlist = spotifyPlayer._options.templateContent.querySelector('.playlist');
-  const tracks = playlist.querySelectorAll('.track');
-  const randomTrack = tracks[Math.floor(Math.random() * tracks.length)];
-
-  // Get the track URI
-  const trackUri = randomTrack.getAttribute('data-uri');
-
-  // Play the track
-  spotifyPlayer._options.player._postMessage({ type: 'pause' });
-  spotifyPlayer._options.player._postMessage({ type: 'play', data: { uri: trackUri } });
-}
-
-
 // VIRTUAL ALBUM
 // Fetch images and create the calendar-like structure
 fetch('photos.json')
