@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
 
 #title {
-  font-family: 'Pacifico', cursive;
+  font-family: 'Fira Code', cursive;
   font-size: 3rem;
   text-align: center;
   color: #f5e9ef;
@@ -178,3 +178,21 @@ body, html {
 #monthDropdown:hover {
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
 }
+
+
+/* Spotify */
+
+.spotify-icon {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+}
+
+.spotify-icon img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+

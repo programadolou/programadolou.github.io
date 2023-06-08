@@ -4,7 +4,7 @@ let counter = 0;
 
 document.addEventListener('mousemove', function (e) {
   counter++;
-  if (counter % 100 !== 0) return;  // only create a heart every 10 mousemoves
+  if (counter % 10 !== 0) return;  // only create a heart every 10 mousemoves
 
   let heart = document.createElement('div');
   heart.className = 'heart';
@@ -19,6 +19,7 @@ document.addEventListener('mousemove', function (e) {
     heart.remove();
   }, 1000);
 });
+
 
 // VIRTUAL ALBUM
 // Fetch images and create the calendar-like structure
