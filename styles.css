@@ -238,13 +238,13 @@ body, html {
 
 
 /* CSS rules for screens smaller than 600px wide */
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 1000px) {
   body {
       zoom: 1.5;  /* increase zoom level */
   }
   
   #viewer {
-      margin-top: 100px; /* push viewer lower on the page */
+      margin-top: 300px; /* push viewer lower on the page */
       /* additional styles */
   }
 }
