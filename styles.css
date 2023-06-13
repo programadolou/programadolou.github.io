@@ -248,3 +248,9 @@ body, html {
       /* additional styles */
   }
 }
+/* Macbook Air viewer */
+@media screen and (max-width: 1440px) {
+  #viewer {
+      margin-left: 250px; /* adjust this value as needed */
+  }
+}
