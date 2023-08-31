@@ -1,8 +1,22 @@
+// document.addEventListener("DOMContentLoaded", function() {
+//     if (localStorage.getItem('authorized') !== 'true') {
+//         window.location.href = 'login.html';
+//     }
+//     // rest of your code
+// });     
+
 document.addEventListener("DOMContentLoaded", function () {
+    console.log("DOM is loaded");  // Debugging line
     const mainMenu = document.getElementById("main-menu");
     const girlfriendButton = document.getElementById("girlfriend-button");
     const irrelevantButton = document.getElementById("irrelevant-button");
-  
+    const foquitaButton = document.getElementById("foquita-button");
+    
+    foquitaButton.addEventListener("click", function () {
+        console.log("Button clicked");  // Debugging line
+        window.location.href = 'foquita.html';
+    });    
+    
     const virtualCalendar = document.getElementById("virtual-calendar");
     const monthDropdown = document.getElementById("monthDropdown");
     const virtualCalendarButton = document.getElementById("virtual-calendar-button");
@@ -57,7 +71,6 @@ document.addEventListener('mousemove', function (e) {
     heart.remove();
   }, 1000);
 });
-
 
 // VIRTUAL ALBUM
 // Fetch images and create the calendar-like structure
