@@ -4,24 +4,25 @@
 <head>
     <link rel="stylesheet" type="text/css" href="styles.css">
     <title>Programa do Lou</title>
-
 </head>
 
 <body>
     <h1 id="title" data-text="Programa do Lou">Programa do Lou</h1>
     <div id="main-menu">
         <button id="girlfriend-button" class="button">Sou a namorada do Lou</button>
-        <button id="irrelevant-button" class="button">Sou uma pessoa irrelevante qualquer</button> 
+        <button id="irrelevant-button" class="button">Sou uma pessoa irrelevante qualquer</button>
+        <button id="foquita-button" class="button">So vim pelas fotos de foquitas</button>
     </div>
     <div id="heart-container"></div>
     <div id="blocked-access">
         <img src="icons/dwight.jpg" alt="Blocked Access Image">
         <h1>O teu acesso foi bloqueado, sai ja do programa do Lou!!</h1>
     </div>       
-    <select id="monthDropdown"></select>
-        <div id="virtual-calendar">
+    <select id="monthDropdown"></select> <!-- Closing the select tag here -->
+    <div id="virtual-calendar">
         <div id="calendar"></div>
         <div id="viewer"></div>
+    </div> <!-- Closing the div tag here -->
     
     <div class="spotify-icon">
         <a href="https://open.spotify.com/playlist/6yInV6tvkOw6ZSg2Rboemb?si=58cb3346210d42dd" target="_blank">
@@ -30,7 +31,6 @@
     </div>
     
     <script src="scripts.js"></script>
-
 </body>
 
 </html>
