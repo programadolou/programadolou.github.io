@@ -33,19 +33,27 @@
         <img id="foquita-img" src="" alt="Random Foquita Picture" style="display:none;">
     </div>
     <button id="refresh-button">Refresh Photo</button>
+    <button id="home-button">Go Home</button>
     <div id="error-message" style="display:none; text-align:center;">Failed to load image.</div>
+
+
 
     <script>
         const sealContainer = document.getElementById("seal-container");
         const img = document.getElementById("foquita-img");
         const refreshButton = document.getElementById("refresh-button");
+        
+        const homeButton = document.getElementById("home-button");
+        homeButton.addEventListener("click", function() {
+            window.location.href = "index.html";
+        });
+
 
         function refreshImage() {
             const lastIndexShown = parseInt(localStorage.getItem('lastIndexShown') || 0, 10);
             
             // Calculate the next index to show
-            const nextIndex = (lastIndexShown % 100) + 1;  // Replace 100 with the total number of images
-            
+            const nextIndex = (lastIndexShown % 83) + 1;  // Change 83 to the actual total number of images if different            
             // Update the last shown index
             localStorage.setItem('lastIndexShown', nextIndex.toString());
             
