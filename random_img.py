@@ -1,37 +1,38 @@
 import os
 import json
 from datetime import date, timedelta
+import random
 
 # specify your path
-path = r'imagens'
+path = r'Fotos_2'
 
 # get list of all files
 files = os.listdir(path)
+random.shuffle(files)  # Shuffle the files list to randomize the order
 
 # start date
-start_date = date(2023, 6, 9)
+start_date = date(2024, 1, 23)
 
 # create list to hold data
 data = []
 
 # loop over all files
-for i, file in enumerate(files, 1):
+for i, file in enumerate(files):
     # get the extension
     ext = os.path.splitext(file)[1]
     
     # check if the file is an image
-    if ext.lower() in ['.jpg', '.jpeg', '.png', '.gif', '.bmp']:
+    if ext.lower() in ['.jpg', '.jpeg', '.png', '.gif', '.bmp', '.heic']:
+        # TODO: Convert '.heic' files to '.jpg' here before proceeding
+        
         # create dict for this file
         file_data = {
-            "path": f"imagens/{file}",
-            "date": str(start_date)
+            "path": os.path.join(path, file),
+            "date": str(start_date + timedelta(days=i))
         }
         
         # add dict to list
         data.append(file_data)
-        
-        # increment the date
-        start_date += timedelta(days=1)
 
 # write data to JSON file
 with open('photos.json', 'w') as f:
