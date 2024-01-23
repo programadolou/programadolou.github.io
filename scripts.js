@@ -129,26 +129,57 @@ fetch('photos.json')
 
                     // When a day is clicked, handle opening and closing of images
                     day.addEventListener('click', () => {
+                        // Check the date is not in the future
                         if (new Date(date) <= today) {
+                            const img = document.createElement('img');
+                            img.classList.add('viewer__image');
+                            viewer.innerHTML = '';
+                    
+                            // Check the file extension
+                            const fileExtension = data.path.split('.').pop().toLowerCase();
+                            if (fileExtension === 'heic') {
+                                // Convert HEIC to JPG using heic2any
+                                fetch(data.path)
+                                    .then(response => response.blob())
+                                    .then(blob => heic2any({
+                                        blob,
+                                        toType: "image/jpeg",
+                                        quality: 0.8
+                                    }))
+                                    .then(conversionResult => {
+                                        img.src = URL.createObjectURL(conversionResult);
+                                        viewer.appendChild(img);
+                                    })
+                                    .catch(error => {
+                                        console.error(error);
+                                        // Handle the error
+                                    });
+                            } else {
+                                // Handle other image types as before
+                                img.src = data.path;
+                                viewer.appendChild(img);
+                            }
+                    
+                            // Show or hide the gift icon and viewer based on whether the image has been opened
                             if (!openedImages.includes(date)) {
                                 // Open the image
                                 openedImages.push(date);
                                 giftIcon.style.display = 'none'; // Hide the gift icon
                                 viewer.style.display = 'block';
-
-                                const img = document.createElement('img');
-                                img.src = data.path;
-                                img.classList.add('viewer__image');
-                                viewer.innerHTML = '';
-                                viewer.appendChild(img);
                             } else {
-                                // Close the image
-                                openedImages.splice(openedImages.indexOf(date), 1);
-                                giftIcon.style.display = 'none'; // Don't show the gift icon again
-                                viewer.style.display = 'none';
-                                viewer.innerHTML = '';
+                                // Toggle the image view
+                                const index = openedImages.indexOf(date);
+                                if (index > -1) {
+                                    openedImages.splice(index, 1); // Remove the date from opened images
+                                    giftIcon.style.display = 'block'; // Show the gift icon again
+                                    viewer.style.display = 'none'; // Hide the viewer
+                                } else {
+                                    openedImages.push(date); // Add the date to opened images
+                                    giftIcon.style.display = 'none'; // Hide the gift icon
+                                    viewer.style.display = 'block'; // Show the viewer
+                                }
                             }
-
+                    
                             // Save the opened images to localStorage
                             localStorage.setItem('openedImages', JSON.stringify(openedImages));
                         }
