@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Virtual Garden</title>
+    <style>
+
+    @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+        
+    body, html {
+    height: 100%;
+    margin: 0;
+    background: url('garden-background.png') no-repeat center center fixed; 
+    background-size: cover;
+    overflow: auto; /* Allows the user to scroll if the content is larger than the screen */
+    }
+    h2 {
+    font-family: 'Fira Code', cursive;
+    font-size: 3rem;
+    text-align: center;
+    color: #50474b;
+    position: relative;
+    margin-top: 0;
+    padding-top: 20px;
+    animation: sparkle 2s infinite;
+    }
+    /* HEARTS */
+
+    #heart-container {
+        position: relative;
+
+    }
+    .heart {
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        background-image: url('svg\ files\/heart.svg');
+        background-size: contain;
+        background-repeat: no-repeat;
+        pointer-events: none;
+        animation: float 5s ease-in-out infinite;
+    }
+    
+    
+    
+    @keyframes float {
+        0% {
+        transform: translateY(0px);
+        }
+        50% {
+        transform: translateY(-20px);
+        }
+        100% {
+        transform: translateY(0px);
+        }
+  }
+        /* ##########################################################
+        /* # Virtual garden
+        /* ########################################################## */
+
+        /* Base plant style */
+        .plant {
+        position: absolute;
+        border-radius: 50%;
+        cursor: pointer;
+        }
+                
+        /* Garden Styles */
+        #garden {
+            width: 100%;
+            height: 500px;
+            border: none; /* or keep the border if you want */
+            position: relative;
+        }
+
+
+        /* Flower Styles */
+        /* Using CSS gradients and shapes to create more detailed flowers */
+        .flower1 {
+            width: 30px;
+            height: 30px;
+            background: radial-gradient(circle at 5px 5px, #ff0, #f00 70%);
+            border-radius: 50%;
+            box-shadow: 
+                15px 15px 0 0 #ff0,
+                -15px -15px 0 0 #ff0,
+                15px -15px 0 0 #ff0,
+                -15px 15px 0 0 #ff0,
+                0 15px 0 0 #ff0,
+                0 -15px 0 0 #ff0,
+                15px 0 0 0 #ff0,
+                -15px 0 0 0 #ff0;
+        }
+
+        .flower2 {
+            width: 30px;
+            height: 30px;
+            background: radial-gradient(circle at 5px 5px, #00f, #800080 70%);
+            border-radius: 50%;
+            box-shadow: 
+                15px 15px 0 0 #00f,
+                -15px -15px 0 0 #00f,
+                15px -15px 0 0 #00f,
+                -15px 15px 0 0 #00f,
+                0 15px 0 0 #00f,
+                0 -15px 0 0 #00f,
+                15px 0 0 0 #00f,
+                -15px 0 0 0 #00f;
+        }
+
+        .flower3 {
+            width: 30px;
+            height: 30px;
+            background: radial-gradient(circle at 5px 5px, #ffa500, #008000 70%);
+            border-radius: 50%;
+            box-shadow: 
+                15px 15px 0 0 #ffa500,
+                -15px -15px 0 0 #ffa500,
+                15px -15px 0 0 #ffa500,
+                -15px 15px 0 0 #ffa500,
+                0 15px 0 0 #ffa500,
+                0 -15px 0 0 #ffa500,
+                15px 0 0 0 #ffa500,
+                -15px 0 0 0 #ffa500;
+        }
+
+        /* Plant Stem Styles */
+        .plant:before {
+            content: '';
+            position: absolute;
+            bottom: -15px; /* Adjusted for better visuals */
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 15px;
+            background-color: #006400;
+        }
+        /* Separator */
+        #virtual-garden {
+        margin-top: 20px;
+        padding-top: 20px;
+        }
+        
+        #add-plant, #back-main {
+            position: absolute;
+            top: 20px;
+            right: 20px; /* Adjust the position as needed */
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 8px;
+            border: #006400;
+            transition: all 0.3s;
+        }
+
+        #add-plant:hover, #back-main:hover {
+            background-color: #45a049;
+        }
+        #add-plant {
+            /* Aligning buttons next to each other */
+            top: 10px; /* Adjust the top position as needed */
+            right: 10px; /* Adjust the right position as needed */
+            /* ... other properties ... */
+        }
+
+        #back-main {
+            /* Aligning buttons next to each other */
+            top: 70px; /* Adjust the top position as needed */
+            right: 10px; /* Adjust the right position as needed */
+            /* ... other properties ... */
+        }
+
+                /* Additional button styling for aesthetics */
+        #add-plant, #back-main {
+            font-family: 'Pacifico', cursive; /* Stylish font */
+            background-color: #78AB46; /* Soft green color */
+            color: white;
+            /* ... other properties ... */
+        }
+        #add-plant:active, #back-main:active {
+            background-color: #3e8e41;
+            box-shadow: 0 2px #666;
+            transform: translateY(2px);
+        }
+
+        #virtual-garden {
+            position: relative; /* Needed to position the buttons absolutely within the div */
+        }
+
+        
+        .garden-separator {
+        border: none;
+        height: 2px;
+        background-color: #ccc; /* or any color you prefer */
+        margin-top: 20px; /* or as per your design needs */
+        }
+        .note {
+            position: absolute;
+            background-color: rgba(255, 255, 224, 0.9); /* Light yellow background */
+            border: 1px solid #ffd700; /* Gold border */
+            padding: 5px;
+            border-radius: 10px; /* Rounded corners for a softer look */
+            font-family: 'Pacifico', cursive; /* Cute handwritten font */
+            font-size: 14px;
+            color: #556b2f; /* Dark olive green text for contrast */
+            box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3); /* Soft shadow for depth */
+            display: none; /* Hidden by default */
+            z-index: 10;
+            white-space: normal; /* Allows text to wrap */
+            max-width: 150px; /* Adjust width as necessary */
+            word-wrap: break-word; /* Ensures that long words will wrap and not expand the box */
+        }
+
+        /* When the note is clicked, it will disappear */
+        .note:active {
+            display: none;
+        }
+
+    </style>
+    </head>
+<body>
+    <div id="virtual-garden">
+        <h2>My Virtual Garden</h2>
+        <div id="garden"></div>
+        <button id="add-plant">Add a Plant</button>
+        <!-- Back button to main page -->
+        <button id="back-main" onclick="window.location.href='index.html'">Back to Main Page</button>
+    </div>
+    <script>
+        // JavaScript functionality
+        document.addEventListener("DOMContentLoaded", function () {
+        const addPlantButton = document.getElementById("add-plant");
+        const garden = document.getElementById("garden");
+        let isPlantingMode = false;
+
+        // Function to save plants and notes to localStorage
+        function savePlants() {
+            const plants = Array.from(garden.children).filter(child => child.classList.contains('plant')).map(plant => {
+                const note = plant.querySelector('.note');
+                return {
+                    className: plant.className,
+                    left: plant.style.left,
+                    top: plant.style.top,
+                    noteText: note ? note.innerText : '',
+                    // Save the position of the note as well
+                    noteLeft: note ? note.style.left : '',
+                    noteTop: note ? note.style.top : ''
+                };
+            });
+            localStorage.setItem('plants', JSON.stringify(plants));
+        }
+
+        // Function to load plants from localStorage
+        function loadPlants() {
+            const plants = JSON.parse(localStorage.getItem('plants'));
+            if (plants) {
+                plants.forEach(plantData => {
+                    const plant = document.createElement('div');
+                    const note = document.createElement('span');
+                    note.className = 'note';
+                    note.innerText = plantData.noteText;
+                    note.style.display = 'none'; // Hide note by default
+                    note.style.left = plantData.noteLeft; // Set the saved position
+                    note.style.top = plantData.noteTop; // Set the saved position
+
+                    plant.className = plantData.className;
+                    plant.style.left = plantData.left;
+                    plant.style.top = plantData.top;
+                    
+                    if (plantData.noteText) {
+                        plant.appendChild(note); // Append note to plant
+                    }
+                    
+                    garden.appendChild(plant); // Append plant to garden
+                });
+            }
+        }
+
+        loadPlants();
+
+        addPlantButton.addEventListener("click", function() {
+            isPlantingMode = true;
+        });
+
+        garden.addEventListener("click", function(event) {
+            if (isPlantingMode && event.target === garden) {
+                const x = event.clientX - garden.getBoundingClientRect().left;
+                const y = event.clientY - garden.getBoundingClientRect().top;
+                const noteText = prompt("Enter a note for this plant:");
+                
+                if (noteText) {
+                    const plant = document.createElement('div');
+                    const note = document.createElement('span');
+                    note.className = 'note';
+                    note.innerText = noteText;
+                    note.style.display = 'none'; // Initially hide note
+
+                    const flowerClasses = ['flower1', 'flower2', 'flower3'];
+                    const randomClass = flowerClasses[Math.floor(Math.random() * flowerClasses.length)];
+                    plant.className = `plant ${randomClass}`;
+                    plant.style.left = `${x}px`;
+                    plant.style.top = `${y}px`;
+
+                    // Position the note 55 pixels to the right and 2 pixels up from the flower
+                    note.style.left = `55px`;
+                    note.style.top = `-2px`;
+
+                    plant.appendChild(note); // Append note to plant
+                    garden.appendChild(plant); // Append plant to garden
+
+                    savePlants();
+                    isPlantingMode = false;
+                }
+            } else {
+                // Check if the clicked element is a plant and has a note
+                if (event.target.classList.contains('plant')) {
+                    const note = event.target.querySelector('.note');
+                    if (note) {
+                        // Toggle the display state of the note
+                        note.style.display = note.style.display === 'none' ? 'block' : 'none';
+                    }
+                }
+            }
+        });
+    });
+
+
+    </script></body>
+</html>
