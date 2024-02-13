@@ -38,7 +38,16 @@ document.addEventListener("DOMContentLoaded", function () {
       mainMenu.style.display = "none";
       blockedAccess.style.display = "block";
     });
-  
+
+    const virtualGardenButton = document.getElementById("virtual-garden-button");
+    const virtualGarden = document.getElementById("virtual-garden");
+    const addPlantButton = document.getElementById("add-plant");
+    const garden = document.getElementById("garden");
+
+    document.getElementById("virtual-garden-button").addEventListener("click", function () {
+        window.open('virtual-garden.html', '_blank');
+    });    
+
     // virtualCalendarButton.addEventListener("click", function () {
     //     virtualCalendarButton.style.display = "none";  // Hide the calendar button
     //     virtualCalendar.style.display = "block";  // Show the calendar
