@@ -1,257 +1,326 @@
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
-
-#title {
-  font-family: 'Fira Code', cursive;
-  font-size: 3rem;
-  text-align: center;
-  color: #f5e9ef;
-  position: relative;
-  animation: sparkle 2s infinite;
-}
-
-@keyframes sparkle {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.2);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-
-/* #title::before {
-  content: attr(data-text);
-  position: absolute;
-  top: 0;
-  left: 0;
-  color: rgb(214, 205, 214);
-  overflow: hidden;
-  animation: glitch 2s infinite;
-} */
-
-@keyframes glitch {
-  0%, 100% {
-    clip-path: inset(0);
-    transform: scale(1);
-  }
-  20%, 80% {
-    clip-path: inset(0 50% 0 0);
-    transform: scale(0.9) rotate(-2deg);
-  }
-  40%, 60% {
-    clip-path: inset(0 0 0 50%);
-    transform: scale(0.9) rotate(2deg);
-  }
-}
-
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
 body, html {
     height: 100%;
     margin: 0;
-    background: #ebb8cf;
-    overflow: hidden;
-  }
-  
-  /* HEARTS */
-
-  #heart-container {
-    position: relative;
-
-  }
-  .heart {
-    position: absolute;
-    width: 50px;
-    height: 50px;
-    background-image: url('svg\ files\/heart.svg');
-    background-size: contain;
-    background-repeat: no-repeat;
-    pointer-events: none;
-    animation: float 5s ease-in-out infinite;
-  }
-  
-  
-  
-  @keyframes float {
-    0% {
-      transform: translateY(0px);
-    }
-    50% {
-      transform: translateY(-20px);
-    }
-    100% {
-      transform: translateY(0px);
-    }
-  }
-  
-  /* VIRTUAL ALBUM */
-  
-  #calendar {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: start; /* align items to the start */
-    width: 60%; /* reduce the width */
-    max-width: 600px; /* reduce the max-width */
-    margin: 20px; /* add margin to separate from the edges */
-    padding: 10px; /* reduce the padding */
-    box-sizing: border-box;
-  }
-
-.calendar__day {
-  width: calc(100% / 7);
-  height: 80px; /* reduce the height */
-  margin: 1px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #FFF3F8;
-  position: relative;
-  cursor: pointer;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
-  transition: box-shadow 0.3s ease-in-out;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4, #ffdde1);
+    animation: gradient 10s ease infinite;
+    background-size: 400% 400%;
+    opacity: 0;
+    animation: fadeIn 1s ease-in-out forwards;
 }
 
-.calendar__day:hover {
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+/* Smooth Fade-In */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
-.calendar__day .date-number {
-  .calendar__day .date-number {
-    font-family: 'Pacifico', cursive; /* Change to a "cute" font */
-    font-size: 1.5rem; /* Increase the font size */
-    color: #000;
-    text-shadow: 2px 2px 0 #fff, /* Simulate 3D effect */
-                 -1px -1px 0 #fff, 
-                 1px -1px 0 #fff, 
-                 -1px 1px 0 #fff,
-                 1px 1px 0 #fff;
-  }
-  
+/* Animated Background */
+@keyframes gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
-.calendar__day .unopened {
-  position: absolute;
-  width: 50px;
-  height: 50px;
-  background: url('icons/box.png') no-repeat center center;
-  background-size: contain;
+/* Upper Bar */
+#title {
+    font-family: 'Pacifico', cursive;
+    font-size: 2.5rem;
+    text-align: center;
+    color: #fff;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-.calendar__day.disabled {
-  cursor: not-allowed;
-  background-color: #ccc;
-}
-
-#viewer {
-  display: none;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  max-width: 90vw;
-  max-height: 90vh;
-  z-index: 100;
-}
-
-.viewer__image {
-  max-width: 600px;
-  max-height: 400px;
-  margin-bottom: 40%;
-  width: auto;
-  height: auto;
-}
-
-
-/* Dropdown Styles */
-#monthDropdown {
-  display: block;
-  width: 60%; /* reduce the width */
-  max-width: 500px;
-  margin: 30px; /* adjusted the margin to align with the calendar */
-  padding: 5px;
-  background-color: #ccc;
-  color: #000;
-  border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
-}
-
-#monthDropdown:hover {
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
-}
-
-
-/* Spotify */
-
-.spotify-icon {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  z-index: 9999;
-}
-
-.spotify-icon img {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-}
-
-
-#monthDropdown {
-  display: none;
-}
-
+/* Buttons */
 .button {
-  display: block;
-  width: 200px;
-  margin: 10px auto;
-  padding: 10px;
-  font-size: 1.2rem;
-  text-align: center;
-  background-color: #ccc;
-  color: #000;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
+    display: block;
+    width: 220px;
+    margin: 10px auto;
+    padding: 12px 20px;
+    font-size: 1.2rem;
+    text-align: center;
+    background-color: #ff6b81;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
 }
 
 .button:hover {
-  background-color: #999;
+    background-color: #ff4757;
+    box-shadow: 0px 5px 10px rgba(255, 71, 87, 0.3);
+    transform: scale(1.05);
 }
 
-#virtual-calendar-button {
-  margin-top: 20px;
+/* Dark Mode Toggle */
+#dark-mode-toggle {
+    background: #444;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: block;
+    margin: 20px auto;
 }
 
-#blocked-access img {
-  display: block;
-  margin: 0 auto;
-  max-width: 100%;
+#dark-mode-toggle:hover {
+    background: #222;
+    transform: scale(1.1);
 }
 
-#blocked-access h1 {
-  text-align: center;
-  font-size: 2rem;
-  color: #f00;
-  margin-top: 20px;
+/* Heart Animations */
+.heart {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background-image: url('icons/heart.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    pointer-events: none;
+    animation: floatUp 5s ease-in-out infinite;
 }
 
-
-/* CSS rules for screens smaller than 600px wide */
-@media screen and (max-width: 1000px) {
-  body {
-      zoom: 1.5;  /* increase zoom level */
-  }
-  
-  #viewer {
-      margin-top: 300px; /* push viewer lower on the page */
-      /* additional styles */
-  }
+@keyframes floatUp {
+    0% { transform: translateY(0) scale(0.5); opacity: 1; }
+    100% { transform: translateY(-300px) scale(1.5); opacity: 0; }
 }
-/* Macbook Air viewer */
-@media screen and (max-width: 1440px) {
-  #viewer {
-      margin-left: 250px;
-    	margin-top: 100px;/* adjust this value as needed */
-  }
+
+/* Calendar */
+#calendar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start;
+    width: 60%;
+    max-width: 600px;
+    margin: 20px;
+    padding: 15px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.calendar__day {
+    border-radius: 8px;
+    width: calc(100% / 7);
+    height: 80px;
+    margin: 1px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #FFF3F8;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.calendar__day:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+    transform: scale(1.05);
+}
+
+.calendar__day.today {
+    background-color: #ff6b81;
+    color: white;
+    font-weight: bold;
+    border: 2px solid white;
+    box-shadow: 0px 0px 10px rgba(255, 107, 129, 0.5);
+}
+
+/* Spotify */
+.spotify-icon {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 9999;
+}
+
+.spotify-icon img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+/* 📌 Fixing `.viewer__image` - Polaroid Effect */
+.viewer__image {
+    max-width: 220px; /* Small fixed size */
+    height: auto;
+    border-radius: 5px;
+    display: block;
+    margin: 10px auto;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+    padding: 10px;
+    background: white;
+    transform: rotate(-3deg);
+    border: 10px solid white;
+    position: relative;
+}
+
+.viewer__image::after {
+    content: "Memória Especial 💖";
+    display: block;
+    text-align: center;
+    font-size: 0.9rem;
+    font-weight: bold;
+    font-family: 'Pacifico', cursive;
+    color: #333;
+    padding-top: 5px;
+}
+
+/* 📌 Fix Positioning - Calendar + Photo */
+#calendar-container {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 40px;
+}
+
+/* 📱 Mobile Fix: Place Image Below */
+@media screen and (max-width: 768px) {
+    #calendar-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .viewer__image {
+        max-width: 180px;
+        padding: 8px;
+    }
+}
+
+/* Dark Mode Styles */
+.dark-mode {
+    background: linear-gradient(135deg, #2c3e50, #34495e);
+    color: #ecf0f1;
+}
+
+.dark-mode h1, 
+.dark-mode p {
+    color: #ecf0f1;
+}
+
+.dark-mode .button {
+    background-color: #576574;
+    color: white;
+}
+
+.dark-mode .button:hover {
+    background-color: #3c3c3c;
+}
+
+.dark-mode #calendar {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.dark-mode .calendar__day {
+    background-color: #3c3c3c;
+    color: white;
+}
+
+.dark-mode .calendar__day:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.dark-mode .calendar__day.today {
+    background-color: #e74c3c;
+    border-color: white;
+}
+
+/* Dark Mode for Image */
+.dark-mode .viewer__image {
+    background: #f5f5f5;
+}
+
+#monthDropdown {
+    width: 120px; /* Smaller width */
+    padding: 8px 12px;
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+    background-color: #ff6b81;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    outline: none;
+    appearance: none;
+    text-align: center;
+    box-shadow: 0px 3px 8px rgba(255, 107, 129, 0.3);
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 10px; /* Center align above calendar */
+}
+
+/* Custom dropdown arrow */
+#monthDropdown::after {
+    content: '▼';
+    font-size: 0.8rem;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+
+/* Hover & Focus Effects */
+#monthDropdown:hover,
+#monthDropdown:focus {
+    background-color: #ff4757;
+    box-shadow: 0px 6px 12px rgba(255, 71, 87, 0.4);
+    transform: scale(1.05);
+}
+
+/* Adjusting positioning with calendar */
+#calendar-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+/* Back button */
+#back-button {
+    padding: 5px 10px;
+    font-size: 1rem;
+    border: none;
+    background-color: #ff6b81;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+#back-button:hover {
+    background-color: #ff4757;
+    box-shadow: 0px 5px 10px rgba(255, 71, 87, 0.3);
+    transform: scale(1.05);
+}
+#calendar {
+    width: 300px; /* Match calendar width */
+}
+
+/* Dark Mode */
+.dark-mode #monthDropdown {
+    background-color: #3c3c3c;
+    color: white;
+    box-shadow: 0px 3px 8px rgba(200, 200, 200, 0.3);
+}
+
+.dark-mode #monthDropdown:hover,
+.dark-mode #monthDropdown:focus {
+    background-color: #2c2c2c;
+    box-shadow: 0px 6px 12px rgba(255, 255, 255, 0.2);
+}
+
+/* Mobile Adjustments */
+@media screen and (max-width: 768px) {
+    #monthDropdown {
+        width: 100px;
+        font-size: 0.9rem;
+    }
 }
