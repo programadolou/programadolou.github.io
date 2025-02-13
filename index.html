@@ -1,44 +1,61 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt">
 
 <head>
-    <link rel="stylesheet" type="text/css" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Programa do Lou</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
     <script src="https://cdn.jsdelivr.net/npm/heic2any@2.1/dist/heic2any.js"></script> <!-- HEIC conversion library -->
 </head>
 
 <body>
     <h1 id="title" data-text="Programa do Lou">Programa do Lou</h1>
-    <div id="main-menu">
+
+    <nav id="main-menu">
         <button id="girlfriend-button" class="button">Sou a namorada do Lou</button>
         <button id="irrelevant-button" class="button">Sou uma pessoa irrelevante qualquer</button>
-        <button id="foquita-button" class="button">So vim pelas fotos de foquitas</button>
+        <button id="foquita-button" class="button">Só vim pelas fotos de foquitas</button>
         <button id="virtual-garden-button" class="button">O meu jardim virtual</button>
-    </div>
-    <div id="heart-container"></div>
-    <div id="blocked-access">
-        <img src="icons/dwight.jpg" alt="Blocked Access Image">
-        <h1>O teu acesso foi bloqueado, sai ja do programa do Lou!!</h1>
-    </div>       
-    <select id="monthDropdown"></select> <!-- Closing the select tag here -->
-    <div id="virtual-calendar">
-        <div id="calendar"></div>
-        <div id="viewer"></div>
-    </div> <!-- Closing the div tag here -->
+        <button id="notes-button" class="button" onclick="checkAccess()">
+            Dia do São Valentim 2025
+        </button>
+        
+    </nav>
 
+    <div id="heart-container"></div>
+
+    <section id="blocked-access">
+        <img src="icons/dwight.jpg" alt="Blocked Access - The Office Dwight">
+        <h1>O teu acesso foi bloqueado, sai já do Programa do Lou!!</h1>
+    </section>
+
+    <div id="calendar-container">
+        <button id="back-button" onclick="window.location.href='index.html'">⬅ Voltar</button>
+
+        <section id="virtual-calendar">
+            <select id="monthDropdown"></select>
+            <div id="calendar"></div>
+            <div id="viewer"></div>
+        </section>
+
+    </div>
     
-    <div id="virtual-garden" style="display: none;">
+
+    <section id="virtual-garden" style="display: none;">
         <h2>My Virtual Garden</h2>
         <div id="garden"></div>
         <button id="add-plant">Add a Plant</button>
-    </div>
-    
+    </section>
+
+    <button id="dark-mode-toggle">🌙 Dark Mode</button> <!-- Future-proofing -->
+
     <div class="spotify-icon">
         <a href="https://open.spotify.com/playlist/6yInV6tvkOw6ZSg2Rboemb?si=58cb3346210d42dd" target="_blank">
-            <img src="icons/spotify-icon.png" alt="Spotify Icon">
+            <img src="icons/spotify-icon.png" alt="Spotify Playlist Icon - As nossas músicas">
         </a>
     </div>
-    
+
     <script src="scripts.js"></script>
 </body>
 
