@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap');
+
+/* General styles */
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background:#f8b3b5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+/* Title */
+#title {
+    font-family: 'Pacifico', cursive;
+    font-size: 2.5rem;
+    color: white;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px;
+}
+
+/* Back button */
+#back-button {
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    border: none;
+    background-color: #ff6b81;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    margin-bottom: 20px;
+}
+
+#back-button:hover {
+    background-color: #ff4757;
+    box-shadow: 0px 5px 10px rgba(255, 71, 87, 0.3);
+    transform: scale(1.05);
+}
+
+/* Notebook Container - Strict Two Columns */
+.notebook {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Forces exactly two columns */
+    gap: 20px;
+    width: 90%;
+    max-width: 900px;
+    margin-top: 20px;
+    padding: 10px;
+    justify-content: center;
+    align-items: start;
+}
+
+/* Note Card */
+.note {
+    background: #fdf6e3;
+    padding: 15px;
+    border-radius: 6px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
+    text-align: left;
+    min-height: 100px; /* Ensures notes have a consistent height */
+    height: auto;
+
+    /* Lined Paper Background */
+    background: linear-gradient(to bottom, 
+    #ebe48f 0%, #ebe48f 24px, 
+    #6e6d6d 25px, #6e6d6d 26px, 
+    #ebe48f 27px);
+    background-size: 100% 28px; 
+
+    /* Torn Edge Effect */
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 5% 95%, 0 100%);
+    border-left: 8px solid #ff6b81;
+}
+
+/* Handwritten Note Titles */
+.note h2 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: #444;
+    margin: 0;
+    min-height: 30px; /* Ensures consistent title spacing */
+}
+
+/* Hidden text remains inside notes before clicking */
+.hidden-text {
+    display: none;
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.4rem;
+    color: #444;
+    padding: 10px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    text-align: left;
+}
+
+/* Note Expands on Click */
+.note.open {
+    max-height: 1000px; /* Allow enough space for expansion */
+    transition: max-height 0.6s ease-in-out;
+}
+
+/* RESPONSIVENESS */
+@media screen and (max-width: 768px) {
+    .notebook {
+        grid-template-columns: 1fr; /* Switch to single column on small screens */
+    }
+}
