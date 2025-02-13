@@ -4,6 +4,50 @@
 //     }
 //     // rest of your code
 // });     
+function checkAccess() {
+    console.log("🔹 checkAccess() function called"); // Debugging line
+
+    let code = prompt("🔒 Insere o código de acesso:\nPista: Código que costumamos usar nos cofres.");
+
+    if (code === "0107") {
+        console.log("✅ Code is correct. Redirecting...");
+        window.location.href = "notes.html"; // Redirect if correct
+    } else {
+        console.log("❌ Code is incorrect. Showing blocked message.");
+        alert("❌ Código incorreto! Acesso negado."); // Show error message
+
+        // Show the blocked access section instead of replacing the entire body
+        document.getElementById("main-menu").style.display = "none";
+        document.getElementById("calendar-container").style.display = "none";
+        document.getElementById("virtual-garden").style.display = "none";
+        document.getElementById("blocked-access").style.display = "block";
+    }
+}
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    const darkModeToggle = document.getElementById("dark-mode-toggle");
+    const body = document.body;
+
+    // Check if Dark Mode was previously enabled
+    if (localStorage.getItem("darkMode") === "enabled") {
+        body.classList.add("dark-mode");
+        darkModeToggle.textContent = "☀️ Light Mode";
+    }
+
+    // Toggle Dark Mode On/Off
+    darkModeToggle.addEventListener("click", function () {
+        body.classList.toggle("dark-mode");
+
+        if (body.classList.contains("dark-mode")) {
+            localStorage.setItem("darkMode", "enabled");
+            darkModeToggle.textContent = "☀️ Light Mode";
+        } else {
+            localStorage.setItem("darkMode", "disabled");
+            darkModeToggle.textContent = "🌙 Dark Mode";
+        }
+    });
+});
 
 document.addEventListener("DOMContentLoaded", function () {
     console.log("DOM is loaded");  // Debugging line
@@ -215,3 +259,5 @@ fetch('photos.json')
         dropdown.dispatchEvent(new Event('change'));
     });
 
+
+    
